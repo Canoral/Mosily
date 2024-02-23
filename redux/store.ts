@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import headerReducer from "./reducers/header";
+import alertsReducer from "./reducers/alerts";
 
 const store = configureStore({
   reducer: {
     header: headerReducer,
+    alerts: alertsReducer,
   },
 });
 

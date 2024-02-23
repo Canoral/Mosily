@@ -15,7 +15,7 @@ export default function Header() {
     };
   }, []);
   return (
-    <header className="header ">
+    <header className="header mb-5">
       <div className="navbar max-md:flex max-md:justify-around bg-base-300 items-center">
         <div className="flex-1">
           <div className="w-26 btn">Logo</div>
