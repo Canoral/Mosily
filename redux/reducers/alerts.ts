@@ -28,7 +28,7 @@ export const getAlerts = createAsyncThunk(
 export const deleteAlert = createAsyncThunk(
   "Alert reducer/deleteAlert", // nom de l'action
   async (alertId: number) => {
-    const response = await axiosInstance.delete(`/alerts/delete/${alertId}`);
+    const response = await axiosInstance.put(`/alerts/update/${alertId}`);
     return response.data;
   }
 );
