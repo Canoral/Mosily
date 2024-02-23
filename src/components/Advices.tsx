@@ -6,8 +6,9 @@ import { deleteAlert } from "../../redux/reducers/alerts";
 
 export default function Alertes({ alerts }: { alerts: IAlerts[] }) {
   const dispatch = useAppDispatch();
+
   return (
-    <section className="cards">
+    <section className="advices">
       <h1 className="text-lg font-bold text-center pt-2">Alertes !</h1>
       <div className="flex gap-2 justify-center tablet:flex-col tablet:items-center">
         {alerts.map((alert) => (
