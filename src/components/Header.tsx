@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../commons/redux";
 import { togglerMenuBurger } from "../../redux/reducers/header";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -18,7 +19,11 @@ export default function Header() {
     <header className="header mb-5">
       <div className="navbar max-md:flex max-md:justify-around bg-base-300 items-center">
         <div className="flex-1">
-          <div className="w-26 btn">Logo</div>
+          <div className="w-26">
+            <Link to={"/"}>
+              <img src="/src/assets/logo.png" alt="" width={50} height={50} />
+            </Link>
+          </div>
         </div>
         <ul
           className={`menu menu-horizontal px-1 ${
