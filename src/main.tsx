@@ -7,10 +7,11 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import store from "../redux/store";
+import Layout from "./layout/Layout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={} errorElement={""}>
+    <Route path="/" element={<Layout />} errorElement={""}>
       <Route errorElement={}>
         <Route index element={} />
       </Route>
