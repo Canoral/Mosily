@@ -1,0 +1,86 @@
+{
+  "Advices": [
+    {
+      "id": "1",
+      "language": "fr-FR",
+      "advice_formula": "IF(NOT(CASH_FLOW.category='Telecom')AND(CASH_FLOW.date_and_time<45j))",
+      "advice_text": "Vous pouvez vous abonner à un forfait téléphonique professionnel afin de déduire cette charge personnelle grace à votre entreprise"
+    },
+    {
+      "id": "2",
+      "language": "fr-FR",
+      "advice_formula": "IF((CASH_FLOW.category='Loan')AND(SUM(CASH_FLOW.amount_it>60%)))",
+      "advice_text": "Vos charges de loyer représentent plus de 60% de vos dépenses totales : Avez-vous pensé à acheter ?"
+    }
+  ],
+  "Accounts_Advices": [
+    {
+      "id": "8",
+      "id_account": "30",
+      "id_advice": "1",
+      "status": "New"
+    },
+    {
+      "id": "9",
+      "id_account": "30",
+      "id_advice": "2",
+      "status": "Read"
+    },
+    {
+      "id": "10",
+      "id_account": "30",
+      "id_advice": "2",
+      "status": "New"
+    }
+  ],
+  "Alerts": [
+    {
+      "id": "11",
+      "language": "fr-FR",
+      "alert_formula": "IF((SUM(CASH_FLOW.amount_it<=0))AND(CASH_FLOW.date_and_time<30j))",
+      "alert_text": "Vous avez perdu de l'argent sur 30 jours glissants !"
+    },
+    {
+      "id": "12",
+      "language": "fr-FR",
+      "alert_formula": "IF((COUNT(CASH_FLOW.amount_it=0))AND(CASH_FLOW.date_and_time<30j))",
+      "alert_text": "Est-ce que le bateau coule ?"
+    }
+  ],
+  "Accounts_Alerts": [
+    {
+      "id": "13",
+      "id_account": "30",
+      "id_alert": "12",
+      "status": "New"
+    }
+  ],
+  "Tips": [
+    {
+      "id": "14",
+      "language": "fr-FR",
+      "tip_formula": "",
+      "tip_text": "Savez vous que vous pouvez déduire une partie de votre facture d'électricité si vous travaillez chez vous ?"
+    },
+    {
+      "id": "15",
+      "language": "fr-FR",
+      "tip_formula": "",
+      "tip_text": "Savez vous que vous pouvez déduire plus de frais kilométriques avec un véhicule électrique ?"
+    }
+  ],
+  "Accounts_Tips": [
+    {
+      "id": "16",
+      "id_account": "30",
+      "id_tip": "14",
+      "status": "New"
+    },
+    {
+      "id": "17",
+      "id_account": "30",
+      "id_tip": "15",
+      "status": "New"
+    }
+  ]
+}
