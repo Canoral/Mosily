@@ -1,18 +1,29 @@
-import { createAction, createReducer } from '@reduxjs/toolkit';
+import {
+  createAction,
+  createAsyncThunk,
+  createReducer,
+} from "@reduxjs/toolkit";
+import axiosInstance from "../../commons/axios";
 
 interface AdvicesState {
-  test: string | null;
+  advices: [] | null;
 }
 
 const initialState: AdvicesState = {
-  test: null,
+  advices: null,
 };
 
-export const testAction = createAction<string>('advices/test');
+export const getAdvices = createAsyncThunk(
+  "Advice reducer/getAdvices", // nom de l'action
+  async () => {
+    const response = await axiosInstance.get("/advices/all");
+    return response.data;
+  }
+);
 
 const advicesReducer = createReducer(initialState, (builder) => {
-  builder.addCase(testAction, (state, action) => {
-    state.test
+  builder.addCase(getAdvices.fulfilled, (state, action) => {
+    state.advices = action.payload;
   });
 });
 
