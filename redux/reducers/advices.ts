@@ -21,7 +21,7 @@ export const getAdvices = createAsyncThunk(
 export const deleteAdvice = createAsyncThunk(
   "Advice reducer/deleteAdvice", // nom de l'action
   async (adviceId: number) => {
-    const response = await axiosInstance.put(`/alerts/update/${adviceId}`);
+    const response = await axiosInstance.put(`/advices/update/${adviceId}`);
     return response.data;
   }
 );
@@ -34,7 +34,7 @@ const advicesReducer = createReducer(initialState, (builder) => {
     .addCase(deleteAdvice.fulfilled, (state, action) => {
       if (state.advices) {
         state.advices = state.advices?.filter(
-          (alert) => alert.id !== action.meta.arg
+          (advice) => advice.id !== action.meta.arg
         );
       }
     });

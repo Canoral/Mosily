@@ -1,43 +1,48 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch } from "../../commons/redux";
-import { IAdvices } from "../@types/adives";
-import { deleteAdvice } from "../../redux/reducers/advices";
+import { ITips } from "../@types/tips";
+import { deleteTips } from "../../redux/reducers/tips";
 
-export default function Advices({ advices }: { advices: IAdvices[] }) {
+export default function Tips({ tips }: { tips: ITips[] }) {
   const dispatch = useAppDispatch();
 
+  const hasNewTips = tips.some((tip) => tip.accountsTips[0].status === "New");
+
   return (
-    <section className="advices mt-5">
-      <h1 className="text-lg font-bold text-center pt-2">Conseils !</h1>
+    <section className="tips mt-5">
+      <h1 className="text-lg font-bold text-center pt-2">Tips !</h1>
       <div className="flex gap-2 justify-center tablet:flex-col tablet:items-center">
-        {advices.map((advice) => (
-          <div className="card w-full bg-base-100 shadow-xl" key={advice.id}>
-            <div className="card-body">
-              {advice.accountsAdvice[0] &&
-              advice.accountsAdvice[0].status === "New" ? (
-                <div className="badge badge-secondary">NEW</div>
-              ) : (
-                <div className="badge badge-neutral">OLD</div>
-              )}
-              <h2 className="text-md font-bold">{advice.advice_text}</h2>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary btn-sm mr-auto">
-                  Solution est par là !
-                </button>
-                <button
-                  onClick={() => {
-                    dispatch(deleteAdvice(advice.id));
-                  }}
-                >
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </button>
+        {/* Mapping through alerts */}
+        {hasNewTips ? (
+          tips.map((tip) =>
+            tip.accountsTips[0].status === "New" ? (
+              <div className="card w-full bg-base-100 shadow-xl" key={tip.id}>
+                <div className="card-body justify-between">
+                  <div className="badge badge-secondary">
+                    {tip.accountsTips[0].status}
+                  </div>
+                  <h2 className="text-md font-bold">{tip.tip_text}</h2>
+                  <div className="card-actions">
+                    <button className="btn btn-primary btn-sm mr-auto">
+                      Solution
+                    </button>
+                    {/* Dispatching deletetip action */}
+                    <button
+                      className="mobile:m-auto"
+                      onClick={() => {
+                        dispatch(deleteTips(tip.id));
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faTrashCan} />
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
-        {advices.length === 0 && (
-          <p className="mt-5">Vous n'avez rien d'urgent</p>
+            ) : null
+          )
+        ) : (
+          <p className="mt-5">Je n'ai pas de tips à vous proposer</p>
         )}
       </div>
     </section>

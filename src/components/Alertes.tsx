@@ -20,7 +20,7 @@ export default function Alertes({ alerts }: { alerts: IAlerts[] }) {
         {hasNewAlerts ? (
           alerts.map((alert) =>
             alert.accountsAlerts[0].status === "New" ? (
-              <div className="card w-1/3 bg-base-100 shadow-xl" key={alert.id}>
+              <div className="card w-full bg-base-100 shadow-xl" key={alert.id}>
                 <div className="card-body justify-between">
                   <div className="badge badge-secondary">
                     {alert.accountsAlerts[0].status}

@@ -11,17 +11,17 @@ const initialState: TipsState = {
 };
 
 export const getTips = createAsyncThunk(
-  "Advice reducer/getTips", // nom de l'action
+  "Tips reducer/getTips", // nom de l'action
   async () => {
     const response = await axiosInstance.get("/tips/all");
     return response.data;
   }
 );
 
-export const deleteAdvice = createAsyncThunk(
-  "Advice reducer/deleteAdvice", // nom de l'action
-  async (adviceId: number) => {
-    const response = await axiosInstance.put(`/alerts/update/${adviceId}`);
+export const deleteTips = createAsyncThunk(
+  "Tips reducer/deleteTips", // nom de l'action
+  async (tipsId: number) => {
+    const response = await axiosInstance.put(`/tips/update/${tipsId}`);
     return response.data;
   }
 );
@@ -31,11 +31,9 @@ const tipsReducer = createReducer(initialState, (builder) => {
     .addCase(getTips.fulfilled, (state, action) => {
       state.tips = action.payload;
     })
-    .addCase(deleteAdvice.fulfilled, (state, action) => {
+    .addCase(deleteTips.fulfilled, (state, action) => {
       if (state.tips) {
-        state.tips = state.tips?.filter(
-          (alert) => alert.id !== action.meta.arg
-        );
+        state.tips = state.tips?.filter((tip) => tip.id !== action.meta.arg);
       }
     });
 });
