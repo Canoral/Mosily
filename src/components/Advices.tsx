@@ -6,22 +6,23 @@ import { deleteAdvice } from "../../redux/reducers/advices";
 
 export default function Advices({ advices }: { advices: IAdvices[] }) {
   const dispatch = useAppDispatch();
-  const hasNewAdvices = advices.some(
+
+  // Vérifier s'il y a des alertes "New"
+  const hasNewAlerts = advices.some(
     (advice) => advice.accountsAdvice[0].status === "New"
   );
 
   return (
-    <section className="advices mt-5">
-      <h1 className="text-lg font-bold text-center pt-2">Conseils !</h1>
-      <div className="flex gap-2 justify-center tablet:flex-col tablet:items-center">
+    <section className="cards w-[90%] m-auto">
+      <h1 className="text-5xl font-bold text-center mt-10 text-primary">
+        CONSEILS
+      </h1>
+      <div className="grid grid-cols-2 gap-5 justify-items-center mt-5">
         {/* Mapping through alerts */}
-        {hasNewAdvices ? (
+        {hasNewAlerts ? (
           advices.map((advice) =>
             advice.accountsAdvice[0].status === "New" ? (
-              <div
-                className="card w-full bg-base-100 shadow-xl"
-                key={advice.id}
-              >
+              <div className="card w-[80%] shadow-xl" key={advice.id}>
                 <div className="card-body justify-between">
                   <div className="badge badge-secondary">
                     {advice.accountsAdvice[0].status}
@@ -33,7 +34,7 @@ export default function Advices({ advices }: { advices: IAdvices[] }) {
                     </button>
                     {/* Dispatching deleteadvice action */}
                     <button
-                      className="mobile:m-auto"
+                      className="ml-auto"
                       onClick={() => {
                         dispatch(deleteAdvice(advice.id));
                       }}
@@ -46,7 +47,9 @@ export default function Advices({ advices }: { advices: IAdvices[] }) {
             ) : null
           )
         ) : (
-          <p className="mt-5">Je n'ai pas de advices à vous proposer</p>
+          <p className="col-span-2 mt-5 text-center">
+            Vous n'avez rien d'urgent
+          </p>
         )}
       </div>
     </section>

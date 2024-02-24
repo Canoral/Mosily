@@ -13,14 +13,16 @@ export default function Alertes({ alerts }: { alerts: IAlerts[] }) {
   );
 
   return (
-    <section className="cards">
-      <h1 className="text-lg font-bold text-center pt-2">Alertes !</h1>
-      <div className="flex gap-2 justify-center tablet:flex-col tablet:items-center">
+    <section className="cards w-[90%] m-auto">
+      <h1 className="text-5xl font-bold text-center mt-10 text-accent">
+        ALERTES
+      </h1>
+      <div className="grid grid-cols-2 gap-5 justify-items-center mt-5">
         {/* Mapping through alerts */}
         {hasNewAlerts ? (
           alerts.map((alert) =>
             alert.accountsAlerts[0].status === "New" ? (
-              <div className="card w-full bg-base-100 shadow-xl" key={alert.id}>
+              <div className="card w-[80%] shadow-xl" key={alert.id}>
                 <div className="card-body justify-between">
                   <div className="badge badge-secondary">
                     {alert.accountsAlerts[0].status}
@@ -32,7 +34,7 @@ export default function Alertes({ alerts }: { alerts: IAlerts[] }) {
                     </button>
                     {/* Dispatching deleteAlert action */}
                     <button
-                      className="mobile:m-auto"
+                      className="ml-auto"
                       onClick={() => {
                         dispatch(deleteAlert(alert.id));
                       }}
@@ -45,7 +47,9 @@ export default function Alertes({ alerts }: { alerts: IAlerts[] }) {
             ) : null
           )
         ) : (
-          <p className="mt-5">Vous n'avez rien d'urgent</p>
+          <p className="col-span-2 mt-5 text-center">
+            Vous n'avez rien d'urgent
+          </p>
         )}
       </div>
     </section>

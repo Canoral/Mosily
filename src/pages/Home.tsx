@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../commons/redux";
-import Alertes from "../components/Alertes";
 import { getAlerts } from "../../redux/reducers/alerts";
-import Advices from "../components/Advices";
 import { getAdvices } from "../../redux/reducers/advices";
-import Tips from "../components/Tips";
 import { getTips } from "../../redux/reducers/tips";
+import Alertes from "../components/Alertes";
+import Advices from "../components/Advices";
+import Tips from "../components/Tips";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="main w-4/6 m-auto mb-20">
+    <div className="main">
       {alerts && <Alertes alerts={alerts} />}
       {advices && <Advices advices={advices} />}
       {tips && <Tips tips={tips} />}

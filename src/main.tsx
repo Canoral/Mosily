@@ -15,6 +15,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={"404 Not Found"}>
       <Route index element={<Home />} />
+      <Route path="/:slug" element={""} />
     </Route>
   )
 );

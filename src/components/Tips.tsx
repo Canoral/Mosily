@@ -7,17 +7,20 @@ import { deleteTips } from "../../redux/reducers/tips";
 export default function Tips({ tips }: { tips: ITips[] }) {
   const dispatch = useAppDispatch();
 
-  const hasNewTips = tips.some((tip) => tip.accountsTips[0].status === "New");
+  // Vérifier s'il y a des alertes "New"
+  const hasNewAlerts = tips.some((tip) => tip.accountsTips[0].status === "New");
 
   return (
-    <section className="tips mt-5">
-      <h1 className="text-lg font-bold text-center pt-2">Tips !</h1>
-      <div className="flex gap-2 justify-center tablet:flex-col tablet:items-center">
+    <section className="cards w-[90%] m-auto">
+      <h1 className="text-5xl font-bold text-center mt-10 text-secondary">
+        ASTUCES
+      </h1>
+      <div className="grid grid-cols-2 gap-5 justify-items-center mt-5">
         {/* Mapping through alerts */}
-        {hasNewTips ? (
+        {hasNewAlerts ? (
           tips.map((tip) =>
             tip.accountsTips[0].status === "New" ? (
-              <div className="card w-full bg-base-100 shadow-xl" key={tip.id}>
+              <div className="card w-[80%] shadow-xl" key={tip.id}>
                 <div className="card-body justify-between">
                   <div className="badge badge-secondary">
                     {tip.accountsTips[0].status}
@@ -29,7 +32,7 @@ export default function Tips({ tips }: { tips: ITips[] }) {
                     </button>
                     {/* Dispatching deletetip action */}
                     <button
-                      className="mobile:m-auto"
+                      className="ml-auto"
                       onClick={() => {
                         dispatch(deleteTips(tip.id));
                       }}
@@ -42,7 +45,9 @@ export default function Tips({ tips }: { tips: ITips[] }) {
             ) : null
           )
         ) : (
-          <p className="mt-5">Je n'ai pas de tips à vous proposer</p>
+          <p className="col-span-2 mt-5 text-center">
+            Vous n'avez rien d'urgent
+          </p>
         )}
       </div>
     </section>

@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      sidebar: {
+        calc: "calc(100% - 160px)",
+      },
+    },
     screens: {
       mobile: { max: "639px" },
       tablet: { max: "900px" },
@@ -13,7 +17,7 @@ export default {
 
   // daisyUI config (optional - here are the default values)
   daisyui: {
-    themes: ["nord"],
+    themes: ["emerald"],
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
     utils: true, // adds responsive and modifier utility classes
