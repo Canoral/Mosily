@@ -3,10 +3,10 @@ import {
   createAsyncThunk,
   createReducer,
 } from "@reduxjs/toolkit";
-import { IAlerts } from "../../src/@types/alertes";
 import axiosInstance from "../../commons/axios";
+import { IContent } from "../../src/@types/content";
 interface AlertesState {
-  alerts: IAlerts[] | null;
+  alerts: IContent[] | null;
 }
 
 const initialState: AlertesState = {

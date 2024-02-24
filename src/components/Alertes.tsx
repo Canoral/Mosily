@@ -1,5 +1,5 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { IAlerts } from "../@types/alertes";
+import { IAlerts } from "../@types/content";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch } from "../../commons/redux";
 import { deleteAlert } from "../../redux/reducers/alerts";

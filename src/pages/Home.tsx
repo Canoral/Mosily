@@ -3,9 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../commons/redux";
 import { getAlerts } from "../../redux/reducers/alerts";
 import { getAdvices } from "../../redux/reducers/advices";
 import { getTips } from "../../redux/reducers/tips";
-import Alertes from "../components/Alertes";
-import Advices from "../components/Advices";
-import Tips from "../components/Tips";
+import ContentDisplay from "../components/ContentDisplay";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -21,9 +19,9 @@ export default function Home() {
 
   return (
     <div className="main">
-      {alerts && <Alertes alerts={alerts} />}
-      {advices && <Advices advices={advices} />}
-      {tips && <Tips tips={tips} />}
+      {alerts && <ContentDisplay title="Alertes" data={alerts} />}
+      {advices && <ContentDisplay title="Advices" data={advices} />}
+      {tips && <ContentDisplay title="Tips" data={tips} />}
     </div>
   );
 }

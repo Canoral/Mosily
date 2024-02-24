@@ -1,9 +1,9 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import axiosInstance from "../../commons/axios";
-import { ITips } from "../../src/@types/tips";
+import { IContent } from "../../src/@types/content";
 
 interface TipsState {
-  tips: ITips[] | null;
+  tips: IContent[] | null;
 }
 
 const initialState: TipsState = {
